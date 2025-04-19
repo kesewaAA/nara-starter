@@ -4,10 +4,6 @@
   "description": "Chrome extension to manage tasks and subtasks with GPT.",
   "version": "1.0",
   "permissions": ["storage", "alarms"],
-  "action": {
-    "default_popup": "popup.html",
-    "default_ion": "icon.png"
-  },
   "background": {
     "service_worker": "background.js"
   },
