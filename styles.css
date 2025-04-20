@@ -546,7 +546,7 @@ input[type="checkbox"]:checked+.task-text {
     }
     
 
-/* Responsive styles */
+/* Speech Bubble styles */
 .speech-bubble {
   position: absolute;
   background-color: rgba(255, 255, 255, 0.9);
@@ -592,3 +592,41 @@ input[type="checkbox"]:checked+.task-text {
     transform: translateY(0) scale(1);
   }
 }
+
+.mood-checker {
+    position: fixed;
+    bottom: 20%;
+    left: 10%;
+    width: 280px;
+    padding: 16px;
+    background: #fff;
+    border-radius: 20px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    opacity: 0.95;
+    animation: drift 12s ease-in-out infinite alternate;
+    animation-delay: 2s;
+  }
+  
+  .emoji-options {
+    display: flex;
+    justify-content: space-around;
+    margin-top: 12px;
+  }
+
+  .emoji {
+    font-size: 2rem;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+  .emoji:hover {
+    transform: scale(1.2);
+  }
+  .emoji.selected {
+    transform: scale(1.2);
+    color: #0c9623;
+  }
+  .emoji-label {
+    font-size: 0.8rem;
+    text-align: center;
+    margin-top: 4px;
+  }
