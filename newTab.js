@@ -158,6 +158,7 @@ document.addEventListener("DOMContentLoaded", () => {
   ];
   
 
+  // Add event listener for each emoji
   emojiOptions.forEach(emoji => {
     emoji.addEventListener('click', () => {
       const emotion = emoji.dataset.emotion;
