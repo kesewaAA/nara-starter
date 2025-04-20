@@ -4,6 +4,9 @@
   "description": "Chrome extension to manage tasks and subtasks with GPT.",
   "version": "1.0",
   "permissions": ["storage", "alarms"],
+  "host_permissions": [
+    "https://zenquotes.io/*"
+  ],
   "background": {
     "service_worker": "background.js"
   },
@@ -19,5 +22,6 @@
       "resources": ["scripts/Sortable.min.js"],
       "matches": ["<all_urls>"]
     }
-  ]
+  ],
+  "options_page": "log.html"
 }
