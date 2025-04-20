@@ -11,6 +11,34 @@ document.addEventListener("DOMContentLoaded", () => {
   const resetYesButton = document.getElementById("reset-yes");
   const resetNoButton = document.getElementById("reset-no");
 
+  (async function () {
+    const overlay   = document.getElementById("quote-overlay");
+    const quoteTxt  = document.getElementById("quote-text");
+    const quoteAuth = document.getElementById("quote-author");
+  
+    try {
+      // fetch a random quote (no API key needed, CORS‑friendly)
+      const res   = await fetch("https://zenquotes.io/api/random");
+      const data  = await res.json();          // [{q:"", a:""}]
+      const quote = data?.[0];
+  
+      // fallback if API unhappy
+      const text   = quote?.q || "Be the change that you wish to see in the world.";
+      const author = quote?.a || "Mahatma Gandhi";
+  
+      quoteTxt.textContent  = `“${text}”`;
+      quoteAuth.textContent = `— ${author}`;
+  
+      // small delay then fade in
+      setTimeout(() => {
+        overlay.classList.remove("quote-hidden");
+        overlay.classList.add("show");
+      }, 800);
+    } catch (err) {
+      console.error("Quote fetch failed:", err);
+    }
+  })();
+
   // for controlling when hovers are active
   let hoverListeners = [];
 
