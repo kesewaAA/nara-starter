@@ -510,3 +510,38 @@ input[type="checkbox"]:checked+.task-text {
     to     { transform: translate(-20px, -10px); }
     }
     
+#quote-overlay {
+    position: fixed;
+    bottom: 5%;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 80%;
+    padding: 12px 18px;
+    border-radius: 12px;
+    background: rgba(0,0,0,0.45);
+    color: #fff;
+    font-family: "DM Sans", sans-serif;
+    font-size: 0.95rem;
+    text-align: center;
+    line-height: 1.4;
+    opacity: 0;
+    transition: opacity 1s ease;
+    pointer-events: none;          /* don’t block clicks */
+    }
+
+    #quote-overlay.quote-hidden {
+    opacity: 0;
+    }
+    
+    /* fade‑in class toggled by JS */
+    #quote-overlay.show {
+    opacity: 1;
+    }
+    
+    #quote-overlay #quote-author {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.85rem;
+    opacity: 0.8;
+    }
+    
