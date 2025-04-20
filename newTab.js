@@ -275,6 +275,77 @@ document.addEventListener("DOMContentLoaded", () => {
     });
   }
 
+  function showEncouragingMessage(category) {
+    const EncouragingMessages = [
+      "You are doing great!",
+      "Keep up the good work!",
+      "You're making a difference!",
+      "Every little step counts!",
+      "You're on the right track!",
+      "Your efforts matter!",
+      "You're doing amazing!",
+      "Keep shining!",
+      "You're a star!",
+      "You're making progress!",
+      "You're doing a fantastic job!",
+      "You're a champion!",
+      "You're unstoppable!",
+      "You're a rockstar!",
+    ]
+    const randomIndex = Math.floor(
+      Math.random() * EncouragingMessages.length
+    );
+    const message = EncouragingMessages[randomIndex];
+
+    const position = getSpeechBubblePosition(category);
+
+    const speechBubble = document.createElement("div");
+    speechBubble.className = "speech-bubble";
+    speechBubble.textContent = message;
+
+    speechBubble.style.left = `${position.left}px`;
+    speechBubble.style.top = `${position.top}px`;
+
+    document.body.appendChild(speechBubble);
+    setTimeout(() => {
+      speechBubble.remove();
+    }, 3000); // Remove the message after 3 seconds
+
+
+  }
+
+  function getSpeechBubblePosition(category) {
+    if(category === "daily") {
+      return { left: 400, top: 300 };
+    }
+    if (category === "friends") {
+      return { left: 1510, top: 300 };
+    }
+    if (category === "pet") {
+      return { left: 1310, top: 300 };
+    }
+    if (category === "home") {
+      return { left: 800, top: 300 };
+    }
+    if (category === "mind") {
+      return { left: 1150, top: 300 };
+    }
+    if (category === "others") {
+      return { left: 1280, top: 300 };
+    }
+    // Default position if category is not recognized
+    const deerArea = deerAreas.find((area) => area.category === category);
+    if (deerArea) {
+      return {
+        left: deerArea.left + deerArea.width / 2,
+        top: deerArea.top + deerArea.height / 2,
+      };
+    }
+
+    return { left: 0, top: 0 }; // Fallback position
+  }
+
+
   // Updated hardcoded tasks with new categories and random selection
   const taskPool = {
     daily: [
@@ -671,6 +742,9 @@ document.addEventListener("DOMContentLoaded", () => {
         tasks[originalIndex].completed = checkbox.checked;
 
         if (tasks[originalIndex].completed) {
+
+          showEncouragingMessage(); // Show encouraging message when a task is completed
+          
           const deleteButton = taskItem.querySelector(".delete-task");
           if (deleteButton) deleteButton.remove();
         }
